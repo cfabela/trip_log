@@ -4,7 +4,7 @@ using TripLog.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
-namespace TripLog.Pages
+namespace TripLog.Views
 {
     public partial class DetailPage : ContentPage
     {

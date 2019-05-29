@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripLog.Models;
-using TripLog.Pages;
 using Xamarin.Forms;
 
-namespace TripLog
+namespace TripLog.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

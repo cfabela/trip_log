@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace TripLog.Pages
+namespace TripLog.Views
 {
     public partial class NewEntryPage : ContentPage
     {
