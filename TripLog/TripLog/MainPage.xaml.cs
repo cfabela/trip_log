@@ -28,6 +28,14 @@ namespace TripLog
             Navigation.PushAsync(new NewEntryPage());
         }
 
+        private async void Trips_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var trip = (TripLogEntry)e.Item;
+            await Navigation.PushAsync(new DetailPage(trip));
+
+            trips.SelectedItem = null;
+        }
+
         private List<TripLogEntry> GetItems()
         {
             return new List<TripLogEntry>
