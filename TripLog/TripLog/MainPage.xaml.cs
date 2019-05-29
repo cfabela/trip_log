@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripLog.Models;
+using TripLog.Pages;
 using Xamarin.Forms;
 
 namespace TripLog
@@ -20,6 +21,11 @@ namespace TripLog
             InitializeComponent();
             trips.ItemsSource = GetItems();
             
+        }
+
+        private void New_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NewEntryPage());
         }
 
         private List<TripLogEntry> GetItems()

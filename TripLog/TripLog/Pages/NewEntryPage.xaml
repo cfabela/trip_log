@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="TripLog.Pages.NewEntryPage"
+             Title="New Entry">
+    <ContentPage.Content>
+        <TableView Intent="Form">
+            <TableView.Root>
+                <TableSection>
+                    <EntryCell Label="Title" />
+                    <EntryCell Label="Latitude" Keyboard="Numeric" />
+                    <EntryCell Label="Longitude" Keyboard="Numeric" />
+                    <EntryCell Label="Date" />
+                    <EntryCell Label="Rating" Keyboard="Numeric" />
+                    <EntryCell Label="Notes" />
+                </TableSection>
+            </TableView.Root>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

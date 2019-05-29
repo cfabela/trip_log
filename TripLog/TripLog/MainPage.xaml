@@ -4,14 +4,17 @@
              xmlns:local="clr-namespace:TripLog"
              x:Class="TripLog.MainPage"
              Title="TripLog">
-    <ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" Clicked="New_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>  
         <ListView x:Name="trips">
-            <ListCiew.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Title}"
                               Detail="{Binding Notes}" />
                 </DataTemplate>
-            </ListCiew.ItemTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </ContentPage.Content>
 </ContentPage>
