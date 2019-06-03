@@ -2,6 +2,7 @@
 using System.ComponentModel;
 
 using TripLog.Models;
+using TripLog.Services;
 using TripLog.ViewModels;
 using Xamarin.Forms;
 
@@ -12,25 +13,29 @@ namespace TripLog.Views
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage
     {
+        private MainViewModel _vm => BindingContext as MainViewModel;
 
         public MainPage()
         {
             InitializeComponent();
 
-            BindingContext = new MainViewModel();
-            
+            BindingContext = new MainViewModel(DependencyService.Get<INavService>());
         }
 
-        private void New_Clicked(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            Navigation.PushAsync(new NewEntryPage());
+            base.OnAppearing();
+
+
+            //We need to enforce the call to init because MainPage is launch by default
+            if (_vm != null)
+               await _vm.Init();
         }
 
         private async void Trips_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var trip = (TripLogEntry)e.Item;
-            await Navigation.PushAsync(new DetailPage(trip));
-
+            _vm.ViewCommand.Execute(trip);
             trips.SelectedItem = null;
         }
     }

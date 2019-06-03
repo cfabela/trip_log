@@ -1,4 +1,5 @@
-﻿using TripLog.ViewModels;
+﻿using TripLog.Services;
+using TripLog.ViewModels;
 using Xamarin.Forms;
 
 namespace TripLog.Views
@@ -8,7 +9,7 @@ namespace TripLog.Views
         public NewEntryPage()
         {
             InitializeComponent();
-            BindingContext = new NewEntryViewModel();
+            BindingContext = new NewEntryViewModel(DependencyService.Get<INavService>());
         }
     }
 }

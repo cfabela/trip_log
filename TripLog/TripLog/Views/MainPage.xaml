@@ -5,7 +5,7 @@
              x:Class="TripLog.Views.MainPage"
              Title="TripLog">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New" Clicked="New_Clicked" />
+        <ToolbarItem Text="New" Command="{Binding NewCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>  
         <ListView x:Name="trips" ItemsSource="{Binding LogEntries}" ItemTapped="Trips_ItemTapped">

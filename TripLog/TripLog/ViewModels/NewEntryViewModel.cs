@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TripLog.Models;
+using TripLog.Services;
 using Xamarin.Forms;
 
 namespace TripLog.ViewModels
 {
     public class NewEntryViewModel : BaseViewModel
     {
+        public NewEntryViewModel(INavService navService) : base(navService)
+        {
+        }
 
         private string _title;
         public string Title 
@@ -79,11 +84,11 @@ namespace TripLog.ViewModels
         {
             get
             {
-                return _saveCommand ?? (_saveCommand = new Command(ExecuteSaveCommand, CanSave));
+                return _saveCommand ?? (_saveCommand = new Command(async () => await ExecuteSaveCommand(), CanSave));
             }
         }
 
-        private void ExecuteSaveCommand()
+        private async Task ExecuteSaveCommand()
         {
             var newItem = new TripLogEntry
             {
@@ -96,7 +101,12 @@ namespace TripLog.ViewModels
             };
 
             //TODO: Persis Entry in later chapter
+
+            await NavService.GoBack();
         }
+
+        public override async Task Init()
+        { }
 
         private bool CanSave()
         {
