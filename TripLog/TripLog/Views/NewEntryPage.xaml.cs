@@ -9,7 +9,6 @@ namespace TripLog.Views
         public NewEntryPage()
         {
             InitializeComponent();
-            BindingContext = new NewEntryViewModel(DependencyService.Get<INavService>());
         }
     }
 }

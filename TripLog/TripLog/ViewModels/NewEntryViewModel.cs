@@ -8,8 +8,14 @@ namespace TripLog.ViewModels
 {
     public class NewEntryViewModel : BaseViewModel
     {
-        public NewEntryViewModel(INavService navService) : base(navService)
+
+        private readonly ILocationService _locService;
+
+        public NewEntryViewModel(INavService navService, ILocationService locService) : base(navService)
         {
+            _locService = locService;
+            Date = DateTime.Today;
+            Rating = 1;
         }
 
         private string _title;
@@ -106,7 +112,11 @@ namespace TripLog.ViewModels
         }
 
         public override async Task Init()
-        { }
+        {
+            var coords = await _locService.GetGeoCoordinatesAsync();
+            Latitude = coords.Latitude;
+            Longitude = coords.Longitude;
+        }
 
         private bool CanSave()
         {
