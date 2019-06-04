@@ -126,14 +126,14 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.482894" />
     <PackageReference Include="Xamarin.TestCloud.Agent" Version="0.21.8" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms.Maps">
-      <Version>4.0.0.425677</Version>
+      <Version>4.0.0.482894</Version>
     </PackageReference>
-    <PackageReference Include="Ninject">
-      <Version>3.3.4</Version>
+    <PackageReference Include="Portable.Ninject">
+      <Version>3.3.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

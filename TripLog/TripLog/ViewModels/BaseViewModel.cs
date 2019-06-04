@@ -6,7 +6,7 @@ using TripLog.Services;
 
 namespace TripLog.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         protected INavService NavService { get; private set; }
 
@@ -15,7 +15,10 @@ namespace TripLog.ViewModels
             NavService = navService;
         }
 
-        public abstract Task Init();
+        public virtual Task Init()
+        {
+            return null;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
