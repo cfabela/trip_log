@@ -46,7 +46,7 @@ namespace TripLog.ViewModels
         }
 
         private Command _refreshCommand;
-        public Command Refreshcommand
+        public Command RefreshCommand
         {
             get
             {
