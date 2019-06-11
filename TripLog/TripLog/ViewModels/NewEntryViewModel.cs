@@ -96,19 +96,32 @@ namespace TripLog.ViewModels
 
         private async Task ExecuteSaveCommand()
         {
-            var newItem = new TripLogEntry
+
+            if (IsBusy) return;
+
+            IsBusy = true;
+
+            try
             {
-                Title = Title,
-                Latitude = Latitude,
-                Longitude = Longitude,
-                Date = Date,
-                Rating = Rating,
-                Notes = Notes
-            };
+                var newItem = new TripLogEntry
+                {
+                    Title = Title,
+                    Latitude = Latitude,
+                    Longitude = Longitude,
+                    Date = Date,
+                    Rating = Rating,
+                    Notes = Notes
+                };
 
-            //TODO: Persis Entry in later chapter
-
-            await NavService.GoBack();
+                //TODO: Persis Entry in later chapter
+                //TODO: Remove this in chapter 6
+                await Task.Delay(300);
+                await NavService.GoBack();
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         public override async Task Init()

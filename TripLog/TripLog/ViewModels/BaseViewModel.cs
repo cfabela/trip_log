@@ -20,11 +20,28 @@ namespace TripLog.ViewModels
             return null;
         }
 
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged();
+                OnIsBusyChanged();
+            }
+        }
+
+        protected virtual void OnIsBusyChanged()
+        {
         }
     }
 
