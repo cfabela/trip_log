@@ -1,5 +1,6 @@
-﻿using System;
+﻿
 using Ninject.Modules;
+
 using TripLog.Droid.Services;
 using TripLog.Services;
 
@@ -10,7 +11,11 @@ namespace TripLog.Droid.Modules
         public override void Load()
         {
             Bind<ILocationService>()
-                .To<<LLocationService>()
+                .To<LocationService>()
+                .InSingletonScope();
+
+            Bind<IFirebaseDBService>()
+                .To<FirebaseDBService>()
                 .InSingletonScope();
         }
     }

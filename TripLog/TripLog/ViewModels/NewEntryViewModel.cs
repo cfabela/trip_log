@@ -8,12 +8,14 @@ namespace TripLog.ViewModels
 {
     public class NewEntryViewModel : BaseViewModel
     {
-
         private readonly ILocationService _locService;
+        private readonly ITripLogDataService _tripLogService;
 
-        public NewEntryViewModel(INavService navService, ILocationService locService) : base(navService)
+        public NewEntryViewModel(INavService navService, ILocationService locService,
+            ITripLogDataService tripLogService) : base(navService)
         {
             _locService = locService;
+            _tripLogService = tripLogService;
             Date = DateTime.Today;
             Rating = 1;
         }
@@ -113,9 +115,7 @@ namespace TripLog.ViewModels
                     Notes = Notes
                 };
 
-                //TODO: Persis Entry in later chapter
-                //TODO: Remove this in chapter 6
-                await Task.Delay(300);
+                await _tripLogService.AddEntryAsync(newItem);
                 await NavService.GoBack();
             }
             finally

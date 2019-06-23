@@ -5,15 +5,13 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using TripLog.Droid.Modules;
-using Firebase;
-using TripLog.Droid.Services;
 
 namespace TripLog.Droid
 {
     [Activity(Label = "TripLog", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        public static FirebaseApp firebaseApp;
+       // public static FirebaseApp firebaseApp;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,13 +33,13 @@ namespace TripLog.Droid
 
         private void InitFirebase()
         {
-            var options = new FirebaseOptions.Builder().
-                SetApplicationId("1:609896559072:android:2515d65747fb0c34").
-                SetDatabaseUrl("https://triplog-93404.firebaseio.com/").
-                SetApiKey("AIzaSyD1Gv1RLAyYDkCpm1Vbb47wLepOkmY2YSE").Build();
+            //var options = new FirebaseOptions.Builder().
+            //    SetApplicationId("1:609896559072:android:2515d65747fb0c34").
+            //    SetDatabaseUrl("https://triplog-93404.firebaseio.com/").
+            //    SetApiKey("AIzaSyD1Gv1RLAyYDkCpm1Vbb47wLepOkmY2YSE").Build();
 
-            if (firebaseApp == null)
-                firebaseApp = FirebaseApp.InitializeApp(this, options, "TripLog");
+            //if (firebaseApp == null)
+            //    firebaseApp = FirebaseApp.InitializeApp(this, options, "TripLog");
         }
 
     }

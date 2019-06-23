@@ -1,5 +1,6 @@
 ﻿using System;
 using Ninject.Modules;
+using TripLog.Services;
 using TripLog.ViewModels;
 
 namespace TripLog.Modules
@@ -12,6 +13,13 @@ namespace TripLog.Modules
             Bind<MainViewModel>().ToSelf();
             Bind<DetailViewModel>().ToSelf();
             Bind<NewEntryViewModel>().ToSelf();
+
+            //Core Services
+            var tripLogService = new TripLogFirebaseDataService("https://triplog-93404.firebaseio.com/");
+
+            Bind<ITripLogDataService>()
+                .ToMethod(x => tripLogService)
+                .InSingletonScope();
         }
     }
 }

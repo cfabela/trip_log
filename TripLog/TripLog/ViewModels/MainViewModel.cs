@@ -9,8 +9,12 @@ namespace TripLog.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public MainViewModel(INavService navService) : base(navService)
+        private readonly ITripLogDataService _tripLogService;
+
+        public MainViewModel(INavService navService,
+            ITripLogDataService tripLogService) : base(navService)
         {
+            _tripLogService = tripLogService;
             LogEntries = new ObservableCollection<TripLogEntry>();
         }
 
@@ -64,44 +68,50 @@ namespace TripLog.ViewModels
         {
             if (IsBusy) return;
             IsBusy = true;
+            try
+            {
+                var entries = await _tripLogService.GetEntriesAsync();
+                LogEntries = new ObservableCollection<TripLogEntry>(entries);
 
-            LogEntries.Clear();
-            await Task.Delay(3000);
+                //  await Task.Delay(3000);
 
-          //  await Task.Factory.StartNew(() =>
-           //{
-               LogEntries.Add(new TripLogEntry
-               {
-                   Title = "Washington Monument",
-                   Notes = "Amazing!",
-                   Rating = 3,
-                   Date = new DateTime(2017, 2, 5),
-                   Latitude = 38.8895,
-                   Longitude = -77.0352
-               });
-               LogEntries.Add(new TripLogEntry
-               {
-                   Title = "Statue of Liberty",
-                   Notes = "Inspiring!",
-                   Rating = 4,
-                   Date = new DateTime(2017, 4, 13),
-                   Latitude = 40.6892,
-                   Longitude = -74.0444
-               });
-               LogEntries.Add(new TripLogEntry
-               {
-                   Title = "Golden Gate Bridge",
-                   Notes = "Foggy but beautiful.",
-                   Rating = 5,
-                   Date = new DateTime(2017, 4, 26),
-                   Latitude = 37.8268,
-                   Longitude = -122.4798
-               });
-            // });
-            IsBusy = false;
+                ////  await Task.Factory.StartNew(() =>
+                // //{
+                //     LogEntries.Add(new TripLogEntry
+                //     {
+                //         Title = "Washington Monument",
+                //         Notes = "Amazing!",
+                //         Rating = 3,
+                //         Date = new DateTime(2017, 2, 5),
+                //         Latitude = 38.8895,
+                //         Longitude = -77.0352
+                //     });
+                //     LogEntries.Add(new TripLogEntry
+                //     {
+                //         Title = "Statue of Liberty",
+                //         Notes = "Inspiring!",
+                //         Rating = 4,
+                //         Date = new DateTime(2017, 4, 13),
+                //         Latitude = 40.6892,
+                //         Longitude = -74.0444
+                //     });
+                //     LogEntries.Add(new TripLogEntry
+                //     {
+                //         Title = "Golden Gate Bridge",
+                //         Notes = "Foggy but beautiful.",
+                //         Rating = 5,
+                //         Date = new DateTime(2017, 4, 26),
+                //         Latitude = 37.8268,
+                //         Longitude = -122.4798
+                //     });
+                //  // });
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
     
-
         private async Task ExecuteViewCommand(TripLogEntry entry)
         {
             await NavService.NavigateTo<DetailViewModel, TripLogEntry>(entry);
