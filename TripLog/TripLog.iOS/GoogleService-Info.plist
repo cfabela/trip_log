@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>609896559072-isaoic2g4m0i58sifrqjppn8oj8o3r8r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.609896559072-isaoic2g4m0i58sifrqjppn8oj8o3r8r</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>609896559072-4honivn67i5hrmn03t3dnlvi9rr9h594.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBnbsAiPJfsOLFh2ZxZu4sxxBBZ8WFBlwE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>609896559072</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.itexico.TripLog</string>
+	<key>PROJECT_ID</key>
+	<string>triplog-93404</string>
+	<key>STORAGE_BUCKET</key>
+	<string>triplog-93404.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:609896559072:ios:4485b5f74a2cacb9</string>
+	<key>DATABASE_URL</key>
+	<string>https://triplog-93404.firebaseio.com</string>
+</dict>
+</plist>

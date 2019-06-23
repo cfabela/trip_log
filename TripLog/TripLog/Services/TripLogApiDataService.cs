@@ -20,7 +20,8 @@ namespace TripLog.Services
             _headers.Add("zumo-api", "2.0.0");
         }
 
-        public async Task<IList<TripLogEntry>> GetTaskAsync()
+       
+        public async Task<IList<TripLogEntry>> GetEntriesAsync()
         {
             var url = new Uri(_baseUri, "/tables/entry");
             var response = await SendRequestAsync<TripLogEntry[]>(url,
@@ -58,7 +59,7 @@ namespace TripLog.Services
         public async Task RemoveEntryAsync(TripLogEntry entry)
         {
             var url = new Uri(_baseUri, string.Format("/tables/entry/{0}", entry.Id));
-            var response = await SendRequestAsync<TripLogEntry>(url, HttpMethod.Delete, _headers);
+            await SendRequestAsync<TripLogEntry>(url, HttpMethod.Delete, _headers);
         }
     }
 }

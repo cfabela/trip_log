@@ -28,6 +28,7 @@ namespace TripLog.iOS
             Xamarin.FormsMaps.Init();
             LoadApplication(new App(new TripLogPlatformModule()));
 
+            Firebase.Core.App.Configure();
             return base.FinishedLaunching(app, options);
         }
     }

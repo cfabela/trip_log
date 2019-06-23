@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "609896559072",
+    "firebase_url": "https://triplog-93404.firebaseio.com",
+    "project_id": "triplog-93404",
+    "storage_bucket": "triplog-93404.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609896559072:android:2515d65747fb0c34",
+        "android_client_info": {
+          "package_name": "com.itexico.triplog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609896559072-4honivn67i5hrmn03t3dnlvi9rr9h594.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.itexico.triplog",
+            "certificate_hash": "ab9418ceaf9d0f72dc3a83e06559323ec86160c2"
+          }
+        },
+        {
+          "client_id": "609896559072-nf7c337s7g0rfc5voml4t88nh63q7e6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMN_ahYkBbU7IxMtdIkQmoecBC3IOxIaE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609896559072-nf7c337s7g0rfc5voml4t88nh63q7e6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
