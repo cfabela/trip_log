@@ -8,4 +8,4 @@ specify using gps.
 We will be using Firebase to save the data on the cloud, also we will be using MVVM for our
 mobile design.
 
-This tutorial uses technologies like MVVM, Google Maps, Firebase.
+This tutorial uses technologies like MVVM, Google Maps, Firebase, Akavache.
