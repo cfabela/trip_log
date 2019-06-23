@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+
+using Akavache;
+using Xamarin.Forms;
+
 using TripLog.Models;
 using TripLog.Services;
-using Xamarin.Forms;
+
 
 namespace TripLog.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
         private readonly ITripLogDataService _tripLogService;
+        private readonly IBlobCache _cache;
 
         public MainViewModel(INavService navService,
-            ITripLogDataService tripLogService) : base(navService)
+            ITripLogDataService tripLogService, IBlobCache cache) : base(navService)
         {
             _tripLogService = tripLogService;
+            _cache = cache;
             LogEntries = new ObservableCollection<TripLogEntry>();
         }
 
@@ -55,61 +61,35 @@ namespace TripLog.ViewModels
             get
             {
                 return _refreshCommand
-                    ?? (_refreshCommand = new Command(async () => await LoadEntries()));
+                    ?? (_refreshCommand = new Command(() => LoadEntries()));
             }
         }
 
         public override async Task Init()
         {
-           await LoadEntries();
+           LoadEntries();
         }
 
-        private async Task LoadEntries()
+        private void LoadEntries()
         {
             if (IsBusy) return;
             IsBusy = true;
+            LogEntries.Clear();
             try
             {
-                var entries = await _tripLogService.GetEntriesAsync();
-                LogEntries = new ObservableCollection<TripLogEntry>(entries);
-
-                //  await Task.Delay(3000);
-
-                ////  await Task.Factory.StartNew(() =>
-                // //{
-                //     LogEntries.Add(new TripLogEntry
-                //     {
-                //         Title = "Washington Monument",
-                //         Notes = "Amazing!",
-                //         Rating = 3,
-                //         Date = new DateTime(2017, 2, 5),
-                //         Latitude = 38.8895,
-                //         Longitude = -77.0352
-                //     });
-                //     LogEntries.Add(new TripLogEntry
-                //     {
-                //         Title = "Statue of Liberty",
-                //         Notes = "Inspiring!",
-                //         Rating = 4,
-                //         Date = new DateTime(2017, 4, 13),
-                //         Latitude = 40.6892,
-                //         Longitude = -74.0444
-                //     });
-                //     LogEntries.Add(new TripLogEntry
-                //     {
-                //         Title = "Golden Gate Bridge",
-                //         Notes = "Foggy but beautiful.",
-                //         Rating = 5,
-                //         Date = new DateTime(2017, 4, 26),
-                //         Latitude = 37.8268,
-                //         Longitude = -122.4798
-                //     });
-                //  // });
+                _cache.GetAndFetchLatest("entries", async () => await _tripLogService.GetEntriesAsync())
+                    .Subscribe(x => LogEntries = new ObservableCollection<TripLogEntry>(x),
+                    ex => System.Diagnostics.Debug.WriteLine("No Key"));
             }
             finally
             {
                 IsBusy = false;
             }
+        }
+
+        private void P()
+        {
+
         }
     
         private async Task ExecuteViewCommand(TripLogEntry entry)

@@ -1,5 +1,5 @@
-﻿using System;
-using Ninject.Modules;
+﻿using Ninject.Modules;
+
 using TripLog.Services;
 using TripLog.ViewModels;
 
@@ -20,6 +20,8 @@ namespace TripLog.Modules
             Bind<ITripLogDataService>()
                 .ToMethod(x => tripLogService)
                 .InSingletonScope();
+
+            Bind<Akavache.IBlobCache>().ToConstant(Akavache.BlobCache.LocalMachine);
         }
     }
 }
